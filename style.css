@@ -1,0 +1,260 @@
+:root {
+  --black-color: #0d0d0d;
+  --main-color: #1a1a1a;
+  --text-color: #f2f2f2;
+}
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: flex;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 1.6rem;
+  background-color: var(--main-color);
+  color: var(--text-color);
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+/* HEADER */
+.header {
+  background-color: var(--black-color);
+  padding: 7.2rem 0 8rem;
+}
+
+.header .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  position: absolute;
+  top: 17.3rem;
+}
+
+#form-create {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 0.8rem;
+}
+
+#form-create input {
+  width: 100%;
+  padding: 1.6rem;
+  background-color: #262626;
+  border: 1px solid var(--black-color);
+  border-radius: 0.8rem;
+  color: var(--text-color);
+  font-size: 1.6rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  outline: none;
+}
+
+#form-create input::placeholder {
+  color: #808080;
+}
+
+#form-create button {
+  padding: 1.6rem;
+  background: #1e6f9f;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 0.8rem;
+  color: var(--text-color);
+  font-family: "Inter";
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+main {
+  padding: 9.1rem 0;
+}
+
+.counts .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.counts span {
+  font-size: 1.2rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  color: var(--text-color);
+  background-color: #333333;
+  border: none;
+  border-radius: 100%;
+  padding: 0.2rem 0.8rem;
+}
+
+.created,
+.completed {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.counts h4 {
+  font-size: 1.4rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+
+.created h4 {
+  color: #4ea8de;
+}
+
+.completed h4 {
+  color: #8284fa;
+}
+
+.empty {
+  border-top: 1px solid #333;
+  border-radius: 0.8rem;
+  margin-top: 2.4rem;
+  padding: 6.4rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.6rem;
+  color: #808080;
+  text-align: center;
+}
+
+.round label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.round input[type="checkbox"] {
+  display: none;
+}
+
+.custom-check {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid #4ea8de;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.custom-check::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.round input[type="checkbox"]:checked + .custom-check {
+  background-color: #5e60ce;
+  border-color: #5e60ce;
+}
+
+.round input[type="checkbox"]:checked + .custom-check::after {
+  opacity: 1;
+}
+
+.tasks {
+  padding: 2.4rem 0;
+}
+
+.tasks__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.tasks__item {
+  padding: 1.6rem;
+  background-color: #262626;
+  border: 1px solid #333;
+  border-radius: 0.8rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tasks__item span {
+  font-size: 1.4rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.tasks__actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+}
+
+.tasks__actions button {
+  padding: 0.5rem 0.6rem;
+  cursor: pointer;
+  background-color: transparent;
+  color: #808080;
+  border: none;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+}
+
+.tasks__actions button:hover {
+  transform: scale(1.2);
+}
+
+.task__completed span {
+  color: #808080;
+  text-decoration: line-through;
+}
+
+.task__completed {
+  border-color: #262626;
+}
+
+.hidden {
+  display: none;
+}
