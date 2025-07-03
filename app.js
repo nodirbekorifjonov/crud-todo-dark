@@ -4,6 +4,8 @@ const emptySection = document.querySelector(".empty__section");
 const editModal = document.querySelector(".edit-modal");
 const closeEditBtn = document.querySelector(".close-edit");
 const formEdit = document.getElementById("form-edit");
+const countCreated = document.getElementById("count-created");
+const countCompleted = document.getElementById("count-completed");
 
 let editId;
 
@@ -41,6 +43,13 @@ function showTodos() {
   todos.length
     ? emptySection.classList.add("hidden")
     : emptySection.classList.remove("hidden");
+
+  countCreated.innerText = todos.length;
+  const completedTodos = todos.filter((item, i) => {
+    return item.completed === "true";
+  });
+
+  countCompleted.innerHTML = `${completedTodos.length}/${todos.length}`;
 
   todoList.innerHTML = "";
   todos.forEach((item, i) => {
