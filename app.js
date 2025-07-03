@@ -1,6 +1,11 @@
 const formCreate = document.getElementById("form-create");
 const todoList = document.querySelector(".tasks__list");
 const emptySection = document.querySelector(".empty__section");
+const editModal = document.querySelector(".edit-modal");
+const closeEditBtn = document.querySelector(".close-edit");
+const formEdit = document.getElementById("form-edit");
+
+let editId;
 
 let todos = JSON.parse(localStorage.getItem("list"))
   ? JSON.parse(localStorage.getItem("list"))
@@ -57,7 +62,7 @@ function showTodos() {
                 ${item.text}
               </span>
               <div class="tasks__actions">
-                <button class="edit-btn">
+                <button onclick="editTodo(${i})" class="edit-btn">
                   <i class="fa-solid fa-pencil"></i>
                 </button>
                 <button onclick="deleteTodo(${i})" class="delete-btn">
@@ -90,3 +95,28 @@ function deleteTodo(id) {
   setTodos();
   showTodos();
 }
+
+// edit
+function editTodo(id) {
+  editId = id;
+  formEdit["input-edit"].value = todos[id].text;
+  editModal.classList.remove("hidden");
+}
+
+formEdit.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let todoText = formEdit["input-edit"].value.trim();
+  formEdit.reset();
+  editModal.classList.add("hidden");
+
+  if (todoText.length && editId !== null) {
+    todos[editId].text = todoText;
+    setTodos();
+    showTodos();
+    editId = null;
+  }
+});
+
+closeEditBtn.addEventListener("click", () => {
+  editModal.classList.add("hidden");
+});
