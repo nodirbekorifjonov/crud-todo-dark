@@ -8,8 +8,7 @@ let todos = JSON.parse(localStorage.getItem("list"))
 
 if (todos.length) {
   showTodos();
-} else if (todos.length == 0) {
-  emptySection.classList.remove("hidden");
+  emptySection.classList.add("hidden");
 }
 
 // set todos
@@ -34,7 +33,9 @@ formCreate.addEventListener("submit", (e) => {
 // show todos
 function showTodos() {
   let todos = JSON.parse(localStorage.getItem("list")) || [];
-  emptySection.classList.add("hidden");
+  todos.length
+    ? emptySection.classList.add("hidden")
+    : emptySection.classList.remove("hidden");
 
   todoList.innerHTML = "";
   todos.forEach((item, i) => {
@@ -59,7 +60,7 @@ function showTodos() {
                 <button class="edit-btn">
                   <i class="fa-solid fa-pencil"></i>
                 </button>
-                <button class="delete-btn">
+                <button onclick="deleteTodo(${i})" class="delete-btn">
                   <i class="fa-solid fa-trash-can"></i>
                 </button>
               </div>
@@ -78,3 +79,14 @@ todoList.addEventListener("click", (e) => {
     showTodos();
   }
 });
+
+// delete todo
+function deleteTodo(id) {
+  const deletedTodos = todos.filter((item, i) => {
+    return i !== id;
+  });
+
+  todos = deletedTodos;
+  setTodos();
+  showTodos();
+}
